@@ -1,4 +1,4 @@
-;;; align-cljlet.el --- Space align various Clojure forms 
+;;; align-cljlet.el --- Space align various Clojure forms
 
 ;; Copyrigth (C) 2011  Glen Stampoultzis
 
@@ -73,7 +73,7 @@
   "Check if we are currently looking at a let form"
   (save-excursion
     (if (looking-at "(")
-        (progn 
+        (progn
           (down-list)
           (let ((start (point))
                 name)
@@ -85,6 +85,7 @@
              (string-match " *if-let" name)
              (string-match " *binding" name)
              (string-match " *loop" name)
+             (string-match " *for" name)
              (string-match " *with-open" name)
              )))
       (if (looking-at "{")
@@ -157,12 +158,12 @@
       (backward-sexp)
       (setq current-width (- (- (current-column) col) 1)
             difference    (- max-width current-width))
-      
+
       (cond ((> difference 0)
              (insert (make-string difference ? )))
             ((< difference 0)
              (delete-backward-char (abs difference))))
-      
+
       )))
 
 (defun acl-respace-form (width)
@@ -178,7 +179,7 @@
       ;; move to start of [
       (down-list 2)
     (down-list 1))
-  
+
   (if (acl-lines-correctly-paired)
       (let ((w (acl-calc-width)))
         (acl-respace-form w)

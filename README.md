@@ -19,6 +19,7 @@ Forms currently handled:
  * if-let
  * binding
  * loop
+ * for
  * with-open
  * literal hashes {}
 
@@ -29,7 +30,7 @@ to align them. For example, the following will not align:
           peach 23] ...)
 
 will not be aligned
- 
+
 # Known limitations:
 
 * This program requires clojure mode to be running in order to
